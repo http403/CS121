@@ -80,11 +80,11 @@ if __name__ == '__main__':
     # I know this is very complicated. Please reference those working prototype above.
     most_sold = [name for name, flavor in flavors.items() if flavor['hit'] == max(f['hit'] for f in flavors.values())]
 
-    most_sold_text = most_sold[0]
     if len(most_sold) > 1:
-        for i in most_sold[1:-1]:
-            most_sold_text += ", {}".format(most_sold[i])
+        most_sold_text = ", ".join(most_sold[:-1])
         most_sold_text += ", and {}".format(most_sold[-1])
+    elif len(most_sold) == 1:
+        most_sold_text = most_sold[0]
 
     print()
     print(most_sold_text, end=" ")
